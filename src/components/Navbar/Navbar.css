@@ -1,0 +1,39 @@
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 40px;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(0, 210, 190, 0.2);
+  }
+  
+  .navbar-links {
+    display: flex;
+    gap: 32px;
+  }
+  
+  .navbar-links button {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-family: inherit;
+    transition: color 0.2s ease;
+  }
+  
+  .navbar-links button:hover {
+    color: #00d2be;
+  }
+  
+  .navbar-logo {
+    height: 36px;
+  }
