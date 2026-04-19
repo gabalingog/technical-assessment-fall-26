@@ -1,4 +1,5 @@
 import Navbar from "./components/Navbar/Navbar";
+import Overview from "./components/Overview/Overview";
 
 export default function App() {
   return (
@@ -11,11 +12,14 @@ export default function App() {
           </video>
           <div className="video-overlay" />
           <div className="video-text">
-            <p className="video-first">Formula 1</p>
-            <p className="video-tagline">THE BEST OR NOTHING</p>
+            {/* <p className="video-first">Formula 1</p> */}
             <h1 className="video-title">Mercedes</h1>
+            <p className="video-tagline">THE BEST OR NOTHING</p>
           </div>
         </section>
+
+        <Overview />
+
         <section id="overview" className="section">
           <h1>Overview</h1>
         </section>

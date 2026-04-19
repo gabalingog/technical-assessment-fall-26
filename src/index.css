@@ -133,11 +133,12 @@ h1 {
 }
 
 .video-title {
-  font-family: 'Racing Sans One', cursive;
+  /* font-family: 'Racing Sans One', cursive; */
+  font-family: 'Zen Dots';
   font-size: 120px;
   line-height: 1;
   color: #ffffff;
-  margin-bottom: 16px;
+  margin-bottom: 0px;
 }
 
 .video-tagline {
