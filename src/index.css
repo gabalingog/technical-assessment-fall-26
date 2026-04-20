@@ -10,6 +10,10 @@ body {
   color: #fff;
 }
 
+html {
+  scroll-padding-top: 50px;
+}
+
 html, body {
   margin: 0;
   padding: 0;
@@ -19,6 +23,10 @@ html, body {
 
 h1 {
   font-family: 'Racing Sans One', cursive;
+}
+
+.overview, .results, .drivers, .charts, .footer {
+  border-top: none !important;
 }
 
 .app {

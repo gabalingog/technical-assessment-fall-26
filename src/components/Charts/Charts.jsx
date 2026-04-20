@@ -124,7 +124,7 @@ const Charts = () => {
         <div className="chart-card chart-wide">
           <div className="chart-card-header">
             <h3 className="chart-card-title">Cumulative Points — Season Progress</h3>
-            <p className="chart-card-sub">Points accumulated race by race · Dashed line = team total</p>
+            <p className="chart-card-sub">Points accumulated race by race | Dashed line = team total</p>
           </div>
           <ResponsiveContainer width="100%" height={300}>
             <LineChart data={pointsData} margin={{ top: 10, right: 20, left: 0, bottom: 0 }}>
@@ -143,7 +143,7 @@ const Charts = () => {
         <div className="chart-card chart-wide">
           <div className="chart-card-header">
             <h3 className="chart-card-title">Points Per Race</h3>
-            <p className="chart-card-sub">Hover each bar to see finishing position · Max 26 pts per race</p>
+            <p className="chart-card-sub">Hover each bar to see finishing position | Max 26 pts per race</p>
           </div>
           <ResponsiveContainer width="100%" height={300}>
           <BarChart data={raceData} margin={{ top: 10, right: 20, left: 0, bottom: 0 }}>

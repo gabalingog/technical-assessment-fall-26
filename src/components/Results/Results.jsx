@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import './Results.css';
 
+
 const Results = () => {
   const [races, setRaces] = useState([]);
   const [driverStandings, setDriverStandings] = useState([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState('');
   const [page, setPage] = useState(1);
-  const rowsPerPage = 20;
+  const [rowsPerPage, setRowsPerPage] = useState(20);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -37,6 +38,11 @@ const Results = () => {
     };
     fetchData();
   }, []);
+
+  const handleRowsChange = (e) => {
+    setRowsPerPage(Number(e.target.value));
+    setPage(1);
+  };
 
   const topDrivers = driverStandings.slice(0, 2);
 
@@ -94,15 +100,23 @@ const Results = () => {
         </div>
       </div>
 
-      <div className="results-search">
+      <div className="results-controls">
         <input
-          type="text"
-          placeholder="Search by race, driver or circuit..."
-          value={search}
-          onChange={e => { setSearch(e.target.value); setPage(1); }}
-          className="search-input"
+            type="text"
+            placeholder="Search by race, driver or circuit..."
+            value={search}
+            onChange={e => { setSearch(e.target.value); setPage(1); }}
+            className="search-input"
         />
-      </div>
+        <div className="rows-select-wrap">
+            <label className="rows-label">Rows</label>
+            <select className="rows-select" value={rowsPerPage} onChange={handleRowsChange}>
+            <option value={10}>10</option>
+            <option value={20}>20</option>
+            <option value={50}>50</option>
+            </select>
+        </div>
+     </div>
 
       <div className="results-table-wrap">
         <table className="results-table">

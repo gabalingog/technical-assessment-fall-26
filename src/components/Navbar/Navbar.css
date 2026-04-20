@@ -51,7 +51,6 @@
     transition: all 0.2s ease;
     font-family: 'Poppins', sans-serif;
     outline: none;
-    -webkit-appearance: none;
   }
   
   .music-btn:hover {
