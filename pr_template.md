@@ -26,7 +26,8 @@ Please check off which features you have implemented:
 - [ ] Includes a custom UI for Boolean search logic (e.g., AND/OR dropdowns or toggles).
 
 ## Screen Recording 
-**Link**: [paste it here]
+**Link**: (https://drive.google.com/file/d/17KMTokbOaBvaJ3NewZYPhDXg6x6VZZZQ/view?usp=sharing)
+https://technical-assessment-fall-26.vercel.app
 
 ## Written Portion
 1. **How did the project go? What parts of it did you most enjoy / find yourself good at?**
@@ -35,4 +36,4 @@ The project was time consuming at first to figure out the UI since I wasn't used
 
 2. **Was this technical assessment what you expected? If you had another two weeks to work on it, what would you add or change?**
 
-I expected more of a HackerRank such as applying to internships, which I was scared about. However, I felt that this project was more fun and open-ended to work with. Additionally, if I had another two weeks, I would spend more time on the animation of the website. What I wanted to specifically do for the drivers was to put the results on the side when you clicked on the driver, which pushes away the pictures of other drivers. I simply did not have the time within my schedule to implement that, but it's one improvement I would start with. I was also envisioning more motion animation such as Lando Norris' website and making it more interactive.
+I expected more of a HackerRank such as applying to internships, which I was scared about. However, I felt that this project was more fun and open-ended to work with. Additionally, if I had another two weeks, I would spend more time on the animation of the website. What I wanted to specifically do for the drivers was to put the results on the side when you clicked on the driver, which pushes away the pictures of other drivers. I simply did not have the time within my schedule to implement that, but it's one improvement I would start with. I was also envisioning more motion animation such as Lando Norris' website and making it more interactive. Also, making it inclusive to mobile users.
