@@ -1,11 +1,11 @@
-# [YOUR FULL NAME]'s Submission
-**Date**: [date here]
+# Gab Alingog's Submission
+**Date**: April 19, 2026
 
-**Email**: [email here]
+**Email**: galingog@bu.edu
 
-**Class Year**: [year here]
+**Class Year**: 2028
 
-**Favorite F1 Team**: [team here]
+**Favorite F1 Team**: Mercedes, when Hamilton was still on the team
 
 ## Core Requirements
 Please check off which features you have implemented:
