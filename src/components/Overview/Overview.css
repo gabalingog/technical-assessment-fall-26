@@ -184,10 +184,11 @@
   .driver-bg-num {
     font-family: 'Racing Sans One', cursive;
     font-size: 80px;
-    color: rgba(255, 255, 255, 0.08);
+    color: rgba(0, 210, 190, 0.1);
     position: absolute;
-    right: 12px;
-    bottom: -12px;
+    right: 28px;
+    top: 50%;
+    transform: translateY(-50%);
     line-height: 1;
     user-select: none;
   }

@@ -1,0 +1,207 @@
+.results {
+    padding: 80px 60px;
+    background: #0a0a0a;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  
+  .results-header {
+    margin-bottom: 40px;
+  }
+  
+  .results-title {
+    font-family: 'Racing Sans One', cursive;
+    font-size: 52px;
+    color: #fff;
+  }
+  
+  .top-contenders {
+    margin-bottom: 40px;
+  }
+  
+  .contenders-label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: rgba(255, 255, 255, 0.3);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  
+  .contenders-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  
+  .contender-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(0, 210, 190, 0.1);
+    border-radius: 4px;
+    padding: 28px;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .contender-first {
+    border-color: rgba(0, 210, 190, 0.3);
+    background: rgba(0, 210, 190, 0.04);
+  }
+  
+  .contender-pos {
+    font-family: 'Racing Sans One', cursive;
+    font-size: 80px;
+    color: rgba(0, 210, 190, 0.1);
+    position: absolute;
+    right: 28px;
+    top: 50%;
+    transform: translateY(-50%);
+    line-height: 1;
+  }
+  
+  .contender-pts {
+    font-family: 'Racing Sans One', cursive;
+    font-size: 32px;
+    color: #00d2be;
+    margin-bottom: 8px;
+  }
+  
+  .contender-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.7);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  
+  .results-search {
+    margin-bottom: 20px;
+  }
+  
+  .search-input {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 4px;
+    padding: 12px 20px;
+    color: #fff;
+    font-size: 13px;
+    font-family: 'Poppins', sans-serif;
+    outline: none;
+    transition: border-color 0.2s ease;
+  }
+  
+  .search-input::placeholder {
+    color: rgba(255, 255, 255, 0.25);
+  }
+  
+  .search-input:focus {
+    border-color: rgba(0, 210, 190, 0.3);
+  }
+  
+  .results-table-wrap {
+    overflow-x: auto;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 4px;
+  }
+  
+  .results-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  
+  .results-table th {
+    text-align: left;
+    padding: 14px 16px;
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: rgba(255, 255, 255, 0.3);
+    text-transform: uppercase;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    background: rgba(255, 255, 255, 0.02);
+  }
+  
+  .results-table td {
+    padding: 14px 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    color: rgba(255, 255, 255, 0.7);
+  }
+  
+  .results-table tr:last-child td {
+    border-bottom: none;
+  }
+  
+  .results-table tr:hover td {
+    background: rgba(0, 210, 190, 0.03);
+  }
+  
+  .pos-cell {
+    font-family: 'Racing Sans One', cursive;
+    font-size: 16px;
+    color: #00d2be !important;
+  }
+  
+  .driver-cell {
+    color: #fff !important;
+    font-weight: 500;
+  }
+  
+  .pts-cell {
+    color: #00d2be !important;
+    font-weight: 500;
+  }
+  
+  .muted {
+    color: rgba(255, 255, 255, 0.35) !important;
+  }
+  
+  .status-finished {
+    color: rgba(0, 210, 190, 0.7) !important;
+  }
+  
+  .status-dnf {
+    color: rgba(255, 100, 100, 0.7) !important;
+  }
+  
+  .pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 24px;
+  }
+  
+  .page-btn {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 3px;
+    color: rgba(255, 255, 255, 0.5);
+    padding: 8px 14px;
+    font-size: 13px;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.2s ease;
+  }
+  
+  .page-btn:hover:not(:disabled) {
+    border-color: rgba(0, 210, 190, 0.3);
+    color: #00d2be;
+  }
+  
+  .page-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+  
+  .page-info {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.3);
+    letter-spacing: 1px;
+  }
+  
+  .loading {
+    color: rgba(255, 255, 255, 0.4);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-size: 12px;
+    padding: 80px 60px;
+  }

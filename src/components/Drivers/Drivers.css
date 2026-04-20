@@ -1,0 +1,286 @@
+.drivers {
+    padding: 80px 60px;
+    background: #0a0a0a;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  
+  .drivers-header {
+    margin-bottom: 32px;
+  }
+  
+  .drivers-title {
+    font-family: 'Racing Sans One', cursive;
+    font-size: 52px;
+    color: #fff;
+  }
+  
+  .team-tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 28px;
+  }
+  
+  .team-tab {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 3px;
+    padding: 10px 24px;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.4);
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.2s ease;
+  }
+  
+  .team-tab.active {
+    border-color: var(--team-color);
+    color: var(--team-color);
+  }
+  
+  .team-tab:hover {
+    color: var(--team-color);
+    border-color: var(--team-color);
+  }
+  
+  .panels-wrap {
+    display: flex;
+    gap: 6px;
+    height: 520px;
+    margin-bottom: 24px;
+  }
+  
+  .driver-panel-card {
+    flex: 1;
+    position: relative;
+    border-radius: 6px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: flex 0.4s ease;
+  }
+  
+  .driver-panel-card.expanded {
+    flex: 1.8;
+  }
+
+  .driver-panel-card:hover {
+    flex: 1.2;
+  }  
+  
+  .driver-panel-card:hover .panel-photo {
+    transform: scale(1.015);
+  }
+  
+  .panel-photo {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    transition: transform 0.4s ease;
+  }
+  
+  .driver-panel-card:hover .panel-photo {
+    transform: scale(1.00);
+  }
+  
+  .panel-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+  }
+  
+  .panel-top {
+    position: absolute;
+    top: 20px;
+    left: 16px;
+    z-index: 2;
+  }
+  
+  .panel-firstname {
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 400;
+    line-height: 1.4;
+  }
+  
+  .panel-lastname {
+    font-family: 'Racing Sans One', cursive;
+    font-size: 18px;
+    color: #fff;
+    line-height: 1.1;
+  }
+  
+  .panel-bottom {
+    position: absolute;
+    bottom: 20px;
+    left: 16px;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  
+  .panel-num {
+    font-family: 'Racing Sans One', cursive;
+    font-size: 22px;
+    color: var(--team-color);
+  }
+  
+  .panel-pts {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.6);
+    letter-spacing: 1px;
+  }
+  
+  .driver-detail {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 4px;
+    padding: 32px;
+    margin-top: 8px;
+    border-color: var(--team-color);
+  }
+  
+  .driver-detail-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 28px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  }
+  
+  .driver-detail-num {
+    font-family: 'Racing Sans One', cursive;
+    font-size: 48px;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  
+  .driver-detail-name {
+    font-family: 'Racing Sans One', cursive;
+    font-size: 32px;
+    color: #fff;
+    margin-bottom: 6px;
+  }
+  
+  .driver-detail-nat {
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: rgba(255, 255, 255, 0.3);
+    text-transform: uppercase;
+  }
+  
+  .close-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 3px;
+    color: rgba(255, 255, 255, 0.4);
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.2s ease;
+  }
+  
+  .close-btn:hover {
+    color: #fff;
+  }
+  
+  .driver-detail-stats {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+  
+  .detail-stat {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 4px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  
+  .detail-stat-val {
+    font-family: 'Racing Sans One', cursive;
+    font-size: 28px;
+    color: #fff;
+    line-height: 1;
+  }
+  
+  .detail-stat-label {
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    color: rgba(255, 255, 255, 0.3);
+    text-transform: uppercase;
+  }
+  
+  .driver-race-list {
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  
+  .race-list-header {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    gap: 24px;
+    padding: 12px 20px;
+    background: rgba(255, 255, 255, 0.03);
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: rgba(255, 255, 255, 0.3);
+    text-transform: uppercase;
+  }
+  
+  .race-list-row {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    gap: 24px;
+    padding: 12px 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.04);
+    transition: background 0.15s ease;
+  }
+  
+  .race-list-row:hover {
+    background: rgba(255, 255, 255, 0.02);
+  }
+  
+  .race-list-name {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.7);
+  }
+  
+  .race-list-pos {
+    font-size: 13px;
+    font-weight: 500;
+    min-width: 40px;
+    text-align: center;
+  }
+  
+  .race-list-pts {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.4);
+    min-width: 40px;
+    text-align: right;
+  }
+  
+  .loading {
+    color: rgba(255, 255, 255, 0.4);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-size: 12px;
+  }
+
+  .panels-wrap {
+    display: flex;
+    gap: 6px;
+    height: 520px;
+    margin-bottom: 24px;
+  }
