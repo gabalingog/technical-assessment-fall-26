@@ -3,6 +3,7 @@ import Overview from "./components/Overview/Overview";
 import Results from "./components/Results/Results";
 import Charts from "./components/Charts/Charts";
 import Drivers from "./components/Drivers/Drivers";
+import Footer from "./components/Footer/Footer";
 
 export default function App() {
   return (
@@ -23,6 +24,7 @@ export default function App() {
 
         <Overview />
         <Results />
+        <Footer />
         <Drivers />
         <Charts />
       </div>

@@ -11,7 +11,7 @@ const Charts = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch('https://api.jolpi.ca/ergast/f1/2024/constructors/mercedes/results/');
+        const res = await fetch('https://api.jolpi.ca/ergast/f1/2024/constructors/mercedes/results/?limit=100');
         const data = await res.json();
         const races = data?.MRData?.RaceTable?.Races ?? [];
 
@@ -43,18 +43,12 @@ const Charts = () => {
           hamiltonTotal += r.Hamilton;
           const total = r.Russell + r.Hamilton;
           if (!best || total > best.total) best = { race: r.race, total };
-          return {
-            race: r.race,
-            Russell: russellTotal,
-            Hamilton: hamiltonTotal,
-            Total: russellTotal + hamiltonTotal,
-          };
+          return { race: r.race, Russell: russellTotal, Hamilton: hamiltonTotal, Total: russellTotal + hamiltonTotal };
         });
 
         setPointsData(cumulative);
         setRaceData(raceArr);
         setBestRace(best);
-
       } catch (err) {
         console.error(err);
       } finally {
@@ -70,7 +64,7 @@ const Charts = () => {
         <div className="custom-tooltip">
           <p className="tooltip-label">{label} Grand Prix</p>
           {payload.map((p, i) => (
-            <p key={i} style={{ color: p.color, fontSize: '12px', margin: '3px 0' }}>
+            <p key={i} className={`tooltip-item ${p.name === 'Russell' ? 'tooltip-russell' : p.name === 'Hamilton' ? 'tooltip-hamilton' : 'tooltip-total'}`}>
               {p.name}: <strong>{p.value} pts</strong>
             </p>
           ))}
@@ -89,7 +83,7 @@ const Charts = () => {
           {payload.map((p, i) => {
             const pos = p.name === 'Russell' ? r?.RussellPos : r?.HamiltonPos;
             return (
-              <p key={i} style={{ color: p.color, fontSize: '12px', margin: '3px 0' }}>
+              <p key={i} className={`tooltip-item ${p.name === 'Russell' ? 'tooltip-russell' : 'tooltip-hamilton'}`}>
                 {p.name}: <strong>{p.value} pts</strong> {pos ? `(P${pos})` : ''}
               </p>
             );
@@ -105,6 +99,10 @@ const Charts = () => {
   const russellWins = raceData.filter(r => r.RussellPos === 1).length;
   const hamiltonWins = raceData.filter(r => r.HamiltonPos === 1).length;
   const finalPoints = pointsData[pointsData.length - 1];
+  const russellPct = finalPoints ? `${(finalPoints.Russell / finalPoints.Total) * 100}%` : '0%';
+  const hamiltonPct = finalPoints ? `${(finalPoints.Hamilton / finalPoints.Total) * 100}%` : '0%';
+  const russellWinPct = wins ? `${(russellWins / wins) * 100}%` : '0%';
+  const hamiltonWinPct = wins ? `${(hamiltonWins / wins) * 100}%` : '0%';
 
   if (loading) return (
     <section id="charts" className="charts">
@@ -131,21 +129,12 @@ const Charts = () => {
           <ResponsiveContainer width="100%" height={300}>
             <LineChart data={pointsData} margin={{ top: 10, right: 20, left: 0, bottom: 0 }}>
               <CartesianGrid stroke="rgba(255,255,255,0.04)" vertical={false} />
-              <XAxis 
-                dataKey="race" 
-                tick={{ fill: 'rgba(255,255,255,0.3)', fontSize: 9 }} 
-                tickLine={false} 
-                axisLine={false} 
-                interval={0}
-                angle={-45}
-                textAnchor="end"
-                height={80}
-                />
+              <XAxis dataKey="race" tick={{ fill: 'rgba(255,255,255,0.3)', fontSize: 9 }} tickLine={false} axisLine={false} interval={0} angle={-45} textAnchor="end" height={80} />
               <YAxis tick={{ fill: 'rgba(255,255,255,0.3)', fontSize: 10 }} tickLine={false} axisLine={false} />
               <Tooltip content={<CustomTooltip />} />
               <Legend wrapperStyle={{ fontSize: '11px', color: 'rgba(255,255,255,0.4)', paddingTop: '12px' }} />
               <Line type="monotone" dataKey="Russell" stroke="#00d2be" strokeWidth={2} dot={{ r: 3, fill: '#00d2be', strokeWidth: 0 }} activeDot={{ r: 5 }} />
-              <Line type="monotone" dataKey="Hamilton" stroke="rgba(255,255,255,0.6)" strokeWidth={2} dot={{ r: 3, fill: 'rgba(255,255,255,0.6)', strokeWidth: 0 }} activeDot={{ r: 5 }} />
+              <Line type="monotone" dataKey="Hamilton" stroke="#888888" strokeWidth={2} dot={{ r: 3, fill: '#888888', strokeWidth: 0 }} activeDot={{ r: 5 }} />
               <Line type="monotone" dataKey="Total" stroke="rgba(0,210,190,0.25)" strokeWidth={1} strokeDasharray="5 5" dot={false} />
             </LineChart>
           </ResponsiveContainer>
@@ -157,15 +146,37 @@ const Charts = () => {
             <p className="chart-card-sub">Hover each bar to see finishing position · Max 26 pts per race</p>
           </div>
           <ResponsiveContainer width="100%" height={300}>
-            <BarChart data={raceData} margin={{ top: 10, right: 20, left: 0, bottom: 0 }}>
-              <CartesianGrid stroke="rgba(255,255,255,0.04)" vertical={false} />
-              <XAxis dataKey="race" tick={{ fill: 'rgba(255,255,255,0.3)', fontSize: 9 }} tickLine={false} axisLine={false} interval={2} />
-              <YAxis tick={{ fill: 'rgba(255,255,255,0.3)', fontSize: 10 }} tickLine={false} axisLine={false} domain={[0, 26]} />
-              <Tooltip content={<RaceTooltip />} />
-              <Legend wrapperStyle={{ fontSize: '11px', color: 'rgba(255,255,255,0.4)', paddingTop: '12px' }} />
-              <ReferenceLine y={25} stroke="rgba(0,210,190,0.15)" strokeDasharray="4 4" label={{ value: 'Win', fill: 'rgba(0,210,190,0.4)', fontSize: 10 }} />
-              <Bar dataKey="Russell" fill="#00d2be" opacity={0.85} radius={[2, 2, 0, 0]} />
-              <Bar dataKey="Hamilton" fill="rgba(255,255,255,0.25)" radius={[2, 2, 0, 0]} />
+          <BarChart data={raceData} margin={{ top: 10, right: 20, left: 0, bottom: 0 }}>
+            <CartesianGrid stroke="rgba(255,255,255,0.04)" vertical={false} />
+            <XAxis
+                dataKey="race"
+                tick={{ fill: 'rgba(255,255,255,0.3)', fontSize: 9 }}
+                tickLine={false}
+                axisLine={false}
+                interval={0}
+                angle={-45}
+                textAnchor="end"
+                height={80}
+            />
+            <YAxis
+                tick={{ fill: 'rgba(255,255,255,0.3)', fontSize: 10 }}
+                tickLine={false}
+                axisLine={false}
+                domain={[0, 26]}
+            />
+            <Tooltip
+                content={<RaceTooltip />}
+                cursor={{ fill: 'rgba(0,210,190,0.05)', stroke: 'rgba(0,210,190,0.2)', strokeWidth: 1 }}
+            />
+            <Legend wrapperStyle={{ fontSize: '11px', color: 'rgba(255,255,255,0.4)', paddingTop: '12px' }} />
+            <ReferenceLine
+                y={25}
+                stroke="rgba(0,210,190,0.15)"
+                strokeDasharray="4 4"
+                label={{ value: 'Win', fill: 'rgba(0,210,190,0.4)', fontSize: 10 }}
+            />
+            <Bar dataKey="Russell" fill="#00d2be" opacity={0.85} radius={[2, 2, 0, 0]} activeBar={false} />
+            <Bar dataKey="Hamilton" fill="#444444" radius={[2, 2, 0, 0]} activeBar={false} />
             </BarChart>
           </ResponsiveContainer>
         </div>
@@ -179,28 +190,28 @@ const Charts = () => {
             <div className="compare-row">
               <span className="compare-name">George Russell</span>
               <div className="compare-bar-wrap">
-                <div className="compare-bar" style={{ width: `${(finalPoints?.Russell / finalPoints?.Total) * 100}%`, background: '#00d2be' }}></div>
+                <div className="compare-bar compare-bar-russell" style={{ '--bar-width': russellPct }}></div>
               </div>
               <span className="compare-val">{finalPoints?.Russell}</span>
             </div>
             <div className="compare-row">
               <span className="compare-name">Lewis Hamilton</span>
               <div className="compare-bar-wrap">
-                <div className="compare-bar" style={{ width: `${(finalPoints?.Hamilton / finalPoints?.Total) * 100}%`, background: 'rgba(255,255,255,0.4)' }}></div>
+                <div className="compare-bar compare-bar-hamilton" style={{ '--bar-width': hamiltonPct }}></div>
               </div>
               <span className="compare-val">{finalPoints?.Hamilton}</span>
             </div>
             <div className="compare-row">
               <span className="compare-name">Russell Wins</span>
               <div className="compare-bar-wrap">
-                <div className="compare-bar" style={{ width: `${(russellWins / wins) * 100}%`, background: '#00d2be' }}></div>
+                <div className="compare-bar compare-bar-russell" style={{ '--bar-width': russellWinPct }}></div>
               </div>
               <span className="compare-val">{russellWins}</span>
             </div>
             <div className="compare-row">
               <span className="compare-name">Hamilton Wins</span>
               <div className="compare-bar-wrap">
-                <div className="compare-bar" style={{ width: `${(hamiltonWins / wins) * 100}%`, background: 'rgba(255,255,255,0.4)' }}></div>
+                <div className="compare-bar compare-bar-hamilton" style={{ '--bar-width': hamiltonWinPct }}></div>
               </div>
               <span className="compare-val">{hamiltonWins}</span>
             </div>

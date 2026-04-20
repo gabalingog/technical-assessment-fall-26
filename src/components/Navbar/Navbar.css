@@ -37,3 +37,31 @@
   .navbar-logo {
     height: 36px;
   }
+
+  .music-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 6px 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: rgba(255, 255, 255, 0.4);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: 'Poppins', sans-serif;
+    outline: none;
+    -webkit-appearance: none;
+  }
+  
+  .music-btn:hover {
+    border-color: rgba(0, 210, 190, 0.4);
+    color: #00d2be;
+  }
+  
+  .music-label {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-family: 'Poppins', sans-serif;
+  }

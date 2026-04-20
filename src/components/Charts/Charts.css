@@ -162,3 +162,37 @@
     font-size: 12px;
     padding: 80px 60px;
   }
+
+  .compare-bar-russell {
+    width: var(--bar-width);
+    height: 100%;
+    border-radius: 2px;
+    background: #00d2be;
+    transition: width 1s ease;
+  }
+  
+  .compare-bar-hamilton {
+    width: var(--bar-width);
+    height: 100%;
+    border-radius: 2px;
+    background: #888888;
+    transition: width 1s ease;
+  }
+  
+  .tooltip-item {
+    font-size: 12px;
+    margin: 3px 0;
+  }
+  
+  .tooltip-russell {
+    color: #00d2be;
+  }
+  
+  .tooltip-hamilton {
+    color: #888888;
+  }
+  
+  .tooltip-total {
+    color: rgba(0, 210, 190, 0.4);
+  }
+
